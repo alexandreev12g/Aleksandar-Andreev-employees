@@ -51,19 +51,13 @@ function App() {
       if (line) {
         const [empID, projectID, dateFrom, dateTo] = line.split(',');
 
-        let startDate;
-        try {
-          startDate = moment(dateFrom, [
-            "YYYY-MM-DD",
-            "MM-DD-YYYY",
-            "DD/MM/YYYY",
-            "MMM D YYYY",
-            "D MMM YYYY"
-          ]).toDate();
-        } catch (error) {
-          console.warn("Error parsing date:", dateFrom, error);
-          continue; 
-        }
+        const startDate = moment(dateFrom, [
+          "YYYY-MM-DD",
+          "MM-DD-YYYY",
+          "DD/MM/YYYY",
+          "MMM D YYYY",
+          "D MMM YYYY"
+        ]).toDate();
 
         const endDate = dateTo.trim() === 'NULL' ? new Date() : moment(dateTo, [
           "YYYY-MM-DD",
